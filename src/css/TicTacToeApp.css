@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+body {
+  background-color: #192a32;
+}
+
 .TicTacToeApp {
   font-family: "Roboto", sans-serif;
-  font-weight: 20;
+  background-color: #192a32;
 }
 
 header {
@@ -9,15 +13,16 @@ header {
   margin: auto;
   text-align: center;
   margin-bottom: 50px;
+  color: white;
 }
 
 .play-space {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .container {
-  background-color: #e0d759;
+  background-color: #192a32;
   width: 520px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -26,24 +31,30 @@ header {
 }
 
 .slot {
-  background-color: white;
+  background-color: #1e3640;
   width: 160px;
   height: 160px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .player-deck {
+  background-color: #1e3640;
+  width: 160px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
+  border-radius: 10px;
 }
 
 .coin-1 {
-  background-color: palevioletred;
   width: 48px;
   height: 48px;
-  font-size: 8.4px;
+  font-size: 18px;
+  color: #1e3640;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,10 +63,10 @@ header {
 }
 
 .coin-2 {
-  background-color: palevioletred;
   width: 66px;
   height: 66px;
-  font-size: 16.8px;
+  font-size: 24px;
+  color: #1e3640;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,10 +75,10 @@ header {
 }
 
 .coin-3 {
-  background-color: palevioletred;
   width: 84px;
   height: 84px;
-  font-size: 25.2px;
+  font-size: 30px;
+  color: #1e3640;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,10 +87,10 @@ header {
 }
 
 .coin-4 {
-  background-color: palevioletred;
   width: 102px;
   height: 102px;
-  font-size: 33.6px;
+  font-size: 36px;
+  color: #1e3640;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,10 +99,10 @@ header {
 }
 
 .coin-5 {
-  background-color: palevioletred;
   width: 120px;
   height: 120px;
   font-size: 42px;
+  color: #1e3640;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +110,42 @@ header {
   border-radius: 50%;
 }
 
+.player-1 .coin-1 {
+  background-color: #31C2BD;
+}
+.player-1 .coin-2 {
+  background-color: #31C2BD;
+}
+.player-1 .coin-3 {
+  background-color: #31C2BD;
+}
+.player-1 .coin-4 {
+  background-color: #31C2BD;
+}
+.player-1 .coin-5 {
+  background-color: #31C2BD;
+}
+
+.player-2 .coin-1 {
+  background-color: #F2B138;
+}
+.player-2 .coin-2 {
+  background-color: #F2B138;
+}
+.player-2 .coin-3 {
+  background-color: #F2B138;
+}
+.player-2 .coin-4 {
+  background-color: #F2B138;
+}
+.player-2 .coin-5 {
+  background-color: #F2B138;
+}
+
 .invisible {
   display: none;
+}
+
+.hovered {
+  background-color: #2e5363;
 }

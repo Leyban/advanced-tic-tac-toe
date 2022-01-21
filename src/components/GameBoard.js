@@ -18,24 +18,28 @@ const GameBoard = () => {
     // Drag Functions
     function dragOver(e) {
         e.preventDefault();
+        e.dataTransfer.dropEffect = "move"
     }
 
     function dragEnter(e) {
         e.preventDefault();
+        e.target.classList += ' hovered';
     }
 
-    function dragLeave() {
+    function dragLeave(e) {
+        if ((/hovered/).test(e.target.className)){e.target.className = e.target.className.slice(0,e.target.className.length-8)}
     }
 
-    function dragDrop() {
-        if (player) {
-            this.innerHTML = coinElement;
-        }
+    function dragDrop(e) {
+        e.preventDefault();
+        if ((/hovered/).test(e.target.className)){e.target.className = e.target.className.slice(0,e.target.className.length-8)}
+        const coin = e.dataTransfer.getData("coin");
+        console.log(document.querySelector(coin));
+        e.target.append(document.querySelector(coin));
 
-        setPlayer('');
-        setCoinSize('');
-        setCoinElement('');
-    
+        const player = e.dataTransfer.getData("player");
+        e.target.className = `slot ${player}`;
+
     }
 
 

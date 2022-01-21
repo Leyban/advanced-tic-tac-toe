@@ -7,7 +7,6 @@ const PlayerDeck = (props) => {
 
     useEffect(() => {
         const coins = document.querySelectorAll(`.player-deck.${props.player} div`);
-        let coinReturn = '';
 
         // coin listeners
         for (let coin of coins) {
@@ -16,23 +15,16 @@ const PlayerDeck = (props) => {
         }
 
         // Drag Functions
-        function dragStart() {
-            coinReturn = this.className;
-            setTimeout(() => {this.className = 'invisible'}, 0);
-            
-            setPlayer(props.player);
-            setCoinSize(coinReturn);
-            setCoinElement(`<div class='${this.className}'><h1>${this.className[this.className.length-1]}</h1></div>`);
+        function dragStart(e) {
+            e.dataTransfer.setData("player", props.player);
+            e.dataTransfer.setData("coin", `.${e.target.parentElement.classList[0]}.${e.target.parentElement.classList[1]} .${e.target.className}`);
+            e.dataTransfer.effectAllowed = "move";
+
 
             console.log('dragStart', this.className);
         }
         function dragEnd() {
-            this.className = coinReturn;
             console.log('dragEnd', this.className);
-
-            setPlayer('');
-            setCoinSize('');
-            setCoinElement('');
         }
 
     },[])
@@ -45,6 +37,7 @@ const PlayerDeck = (props) => {
             <div className="coin-3" draggable='true'><h1>3</h1></div>
             <div className="coin-2" draggable='true'><h1>2</h1></div>
             <div className="coin-1" draggable='true'><h1>1</h1></div>
+            
         </div>
     );
 }

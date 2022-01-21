@@ -2,9 +2,13 @@
 @import 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+body{
+    background-color: $background-color;
+}
+
 .TicTacToeApp {
     font-family: 'Roboto', sans-serif;
-    font-weight: 20
+    background-color: $background-color;
 }
 
 header{
@@ -12,12 +16,13 @@ header{
     margin: auto;
     text-align: center;
     margin-bottom: 50px;
+    color: white;
 }
 
 // Play Space Styles
 .play-space{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 // Game Board Styles
@@ -33,24 +38,30 @@ header{
     background-color: $slot-color;
     width: $slot-size-lg;
     height: $slot-size-lg;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 // Player Deck Styles
 .player-deck{
+    background-color: $deck-color;
+    width: $slot-size-lg;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    transition: 0.2s;
+    border-radius: 10px;
 }
 
 @for $i from 1 through 5 {
     .coin-#{$i}{
-        background-color: palevioletred;
         width: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         height: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
-        font-size: $coin-size-lg * ( 0.07 * $i);
+        font-size: $coin-size-lg * ( 0.1 + ( 0.05 * $i ));
+        color: $deck-color;
 
         display: flex;
         justify-content: center;
@@ -60,8 +71,25 @@ header{
         border-radius: 50%;
     }
 }
+.player-1 {
+    @for $i from 1 through 5 {
+    .coin-#{$i}{
+        background-color: #31C2BD;
+    }
+    }
+}
+.player-2 {
+    @for $i from 1 through 5 {
+    .coin-#{$i}{
+        background-color: #F2B138;
+    }
+    }
+}
 
 .invisible {
     display: none;
+}
+.hovered {
+    background-color: lighten($slot-color, 10%);
 }
 
