@@ -1,0 +1,67 @@
+@use 'sass:math';
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.TicTacToeApp {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 20
+}
+
+header{
+    width: $container-size-lg;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+// Play Space Styles
+.play-space{
+    display: flex;
+    justify-content: center;
+}
+
+// Game Board Styles
+.container{
+    background-color: $hash-color;
+    width: $container-size-lg;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $grid-gap-lg;
+    margin: auto;
+}
+.slot{
+    background-color: $slot-color;
+    width: $slot-size-lg;
+    height: $slot-size-lg;
+}
+
+
+// Player Deck Styles
+.player-deck{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+@for $i from 1 through 5 {
+    .coin-#{$i}{
+        background-color: palevioletred;
+        width: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
+        height: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
+        font-size: $coin-size-lg * ( 0.07 * $i);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        margin: 10px;
+        border-radius: 50%;
+    }
+}
+
+.invisible {
+    display: none;
+}
+

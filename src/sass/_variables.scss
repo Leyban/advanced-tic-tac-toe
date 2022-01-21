@@ -1,0 +1,33 @@
+@use 'sass:math';
+
+$background-color: darkslategrey;
+
+
+
+
+// GameBoard Styles Variables
+$slot-color: white;
+$hash-color: rgb(224, 215, 89);
+
+$slot-size-lg: 160px; 
+$slot-size-md: 120px;
+$slot-size-sm: 80px;
+
+$grid-gap-lg: 20px;
+$grid-gap-md: 15px;
+$grid-gap-sm: 10px;
+
+$container-size-lg: ($slot-size-lg * 3) + ($grid-gap-lg * 2);
+$container-size-md: ($slot-size-md * 3) + ($grid-gap-md * 2);
+$container-size-sm: ($slot-size-sm * 3) + ($grid-gap-sm * 2);
+
+// Player Deck Styles Variables
+$deck-color: darkgreen;
+$deck-size-lg: 210px;
+$deck-size-md: 190px;
+$deck-size-sm: 180px;
+
+$coin-size-lg: 120px;
+$coin-size-md: 100px;
+$coin-size-sm: 80px;
+
