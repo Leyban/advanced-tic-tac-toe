@@ -19,6 +19,7 @@ header {
 .play-space {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .container {
@@ -27,6 +28,7 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+  row-gap: 10px;
   margin: auto;
 }
 
@@ -40,9 +42,32 @@ header {
   align-items: center;
 }
 
+.slot-shadow {
+  background-color: #16272f;
+  width: 160px;
+  height: 170px;
+  border-radius: 10px;
+  transform: translateY(7px);
+}
+
+.slot-overlay {
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 160px;
+  height: 160px;
+}
+
+.player-deck-shadow {
+  background-color: #16272f;
+  width: 160px;
+  height: 570px;
+  border-radius: 10px;
+}
+
 .player-deck {
   background-color: #1e3640;
   width: 160px;
+  height: 560px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -58,8 +83,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border-radius: 50%;
+}
+
+.coin-shadow-1 {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #1c716e;
+  margin: 10px;
 }
 
 .coin-2 {
@@ -70,8 +102,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border-radius: 50%;
+}
+
+.coin-shadow-2 {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background-color: #1c716e;
+  margin: 10px;
 }
 
 .coin-3 {
@@ -82,8 +121,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border-radius: 50%;
+}
+
+.coin-shadow-3 {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background-color: #1c716e;
+  margin: 10px;
 }
 
 .coin-4 {
@@ -94,8 +140,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border-radius: 50%;
+}
+
+.coin-shadow-4 {
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  background-color: #1c716e;
+  margin: 10px;
 }
 
 .coin-5 {
@@ -106,40 +159,87 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border-radius: 50%;
+}
+
+.coin-shadow-5 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #1c716e;
+  margin: 10px;
 }
 
 .player-1 .coin-1 {
   background-color: #31C2BD;
+  transform: translateY(-3.7px);
+}
+.player-1 .coin-shadow-1 {
+  background-color: #1c716e;
 }
 .player-1 .coin-2 {
   background-color: #31C2BD;
+  transform: translateY(-4.4px);
+}
+.player-1 .coin-shadow-2 {
+  background-color: #1c716e;
 }
 .player-1 .coin-3 {
   background-color: #31C2BD;
+  transform: translateY(-5.1px);
+}
+.player-1 .coin-shadow-3 {
+  background-color: #1c716e;
 }
 .player-1 .coin-4 {
   background-color: #31C2BD;
+  transform: translateY(-5.8px);
+}
+.player-1 .coin-shadow-4 {
+  background-color: #1c716e;
 }
 .player-1 .coin-5 {
   background-color: #31C2BD;
+  transform: translateY(-6.5px);
+}
+.player-1 .coin-shadow-5 {
+  background-color: #1c716e;
 }
 
 .player-2 .coin-1 {
   background-color: #F2B138;
+  transform: translateY(-3.7px);
+}
+.player-2 .coin-shadow-1 {
+  background-color: #b87c0c;
 }
 .player-2 .coin-2 {
   background-color: #F2B138;
+  transform: translateY(-4.4px);
+}
+.player-2 .coin-shadow-2 {
+  background-color: #b87c0c;
 }
 .player-2 .coin-3 {
   background-color: #F2B138;
+  transform: translateY(-5.1px);
+}
+.player-2 .coin-shadow-3 {
+  background-color: #b87c0c;
 }
 .player-2 .coin-4 {
   background-color: #F2B138;
+  transform: translateY(-5.8px);
+}
+.player-2 .coin-shadow-4 {
+  background-color: #b87c0c;
 }
 .player-2 .coin-5 {
   background-color: #F2B138;
+  transform: translateY(-6.5px);
+}
+.player-2 .coin-shadow-5 {
+  background-color: #b87c0c;
 }
 
 .invisible {

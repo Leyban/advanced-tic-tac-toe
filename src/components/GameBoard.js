@@ -4,59 +4,45 @@ import { PlayerContext } from "../contexts/PlayerContext";
 const GameBoard = () => {
     const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement } = useContext(PlayerContext);
 
+    const handleClick = (e, num) => {
+        console.log('gameboard handleClicked')
+        if (!coinElement){return () => {
+            setPlayer('');
+            setCoinSize(null);
+            setCoinElement(null);
+            }
+        }
 
-    const slots = document.querySelectorAll('.game-board .slot')
+        
+        const slot = document.querySelector(`.slot-${num}`);
+        console.log(slot);
+        slot.className = 'slot ' + `slot-${num} ` + player;
+        slot.innerHTML = '';
+        slot.append(coinElement);
 
-    // loop through slots and add listeners
-    for (let slot of slots) {
-        slot.addEventListener('dragover', dragOver);
-        slot.addEventListener('dragenter', dragEnter);
-        slot.addEventListener('dragleave', dragLeave);
-        slot.addEventListener('drop', dragDrop);
-    }
 
-    // Drag Functions
-    function dragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = "move"
-    }
 
-    function dragEnter(e) {
-        e.preventDefault();
-        e.target.classList += ' hovered';
-    }
 
-    function dragLeave(e) {
-        if ((/hovered/).test(e.target.className)){e.target.className = e.target.className.slice(0,e.target.className.length-8)}
-    }
-
-    function dragDrop(e) {
-        e.preventDefault();
-        if ((/hovered/).test(e.target.className)){e.target.className = e.target.className.slice(0,e.target.className.length-8)}
-        const coin = e.dataTransfer.getData("coin");
-        console.log(document.querySelector(coin));
-        e.target.append(document.querySelector(coin));
-
-        const player = e.dataTransfer.getData("player");
-        e.target.className = `slot ${player}`;
+        setPlayer('');
+        setCoinSize(null);
+        setCoinElement(null);
 
     }
-
 
     return (  
         <div className="game-board">
             <div className="container">
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,1)}></div><div className="slot slot-1"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,2)}></div><div className="slot slot-2"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,3)}></div><div className="slot slot-3"></div></div>
                 
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,4)}></div><div className="slot slot-4"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,5)}></div><div className="slot slot-5"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,6)}></div><div className="slot slot-6"></div></div>
 
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
-                <div className="slot" draggable='false'></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,7)}></div><div className="slot slot-7"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,8)}></div><div className="slot slot-8"></div></div>
+                <div className="slot-shadow"><div className="slot-overlay" onClick={(e)=>handleClick(e,9)}></div><div className="slot slot-9"></div></div>
             </div>
         </div>
     );
