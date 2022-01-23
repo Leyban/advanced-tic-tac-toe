@@ -17,7 +17,6 @@ function TicTacToeApp() {
             <PlayerDeck player="player-2"/>
           </PlayerContextProvider>
         </div>
-
       </TicTacContextProvider>
     </div>
   );

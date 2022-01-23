@@ -45,6 +45,9 @@ header{
     justify-content: center;
     align-items: center;
 }
+.slot:hover {
+    background-color: lighten($slot-color, 10%);
+}
 .slot-shadow{
     background-color: darken($slot-color, 5%);
     width: $slot-size-lg;
@@ -53,10 +56,16 @@ header{
     transform: translateY(7px);
 }
 .slot-overlay{
-    background: rgba(0,0,0,0.1);
+    background: transparent;
     position: absolute;
     width: $slot-size-lg;
     height: $slot-size-lg;
+}
+.slot-overlay:hover{
+    cursor: pointer;
+    ~.slot{
+        background-color: lighten($slot-color, 10%);
+    }
 }
 
 
@@ -74,7 +83,7 @@ header{
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border-radius: 10px;
 }
 
@@ -96,7 +105,9 @@ header{
         height: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         border-radius: 50%;
         background-color: darken(#31C2BD, 20%);
-        margin: 10px;
+    }
+    .coin-#{$i}:hover{
+        cursor: pointer;
     }
 }
 .player-1 {
@@ -122,10 +133,19 @@ header{
     }
 }
 
-.invisible {
-    display: none;
-}
-.hovered {
-    background-color: lighten($slot-color, 10%);
-}
 
+// effects styles
+@keyframes bounce {
+    15% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.active{
+    animation: bounce 1s infinite;
+}
