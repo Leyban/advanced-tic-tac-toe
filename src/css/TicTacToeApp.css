@@ -54,20 +54,6 @@ header {
   transform: translateY(7px);
 }
 
-.slot-overlay {
-  background: transparent;
-  position: absolute;
-  width: 160px;
-  height: 160px;
-}
-
-.slot-overlay:hover {
-  cursor: pointer;
-}
-.slot-overlay:hover ~ .slot {
-  background-color: #2e5363;
-}
-
 .player-deck-shadow {
   background-color: #16272f;
   width: 160px;
