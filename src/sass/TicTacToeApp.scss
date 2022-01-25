@@ -44,6 +44,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .slot:hover {
     background-color: lighten($slot-color, 10%);
@@ -55,18 +56,6 @@ header{
     border-radius: 10px;
     transform: translateY(7px);
 }
-// .slot-overlay{
-//     background: transparent;
-//     position: absolute;
-//     width: $slot-size-lg;
-//     height: $slot-size-lg;
-// }
-// .slot-overlay:hover{
-//     cursor: pointer;
-//     ~.slot{
-//         background-color: lighten($slot-color, 10%);
-//     }
-// }
 
 
 // Player Deck Styles

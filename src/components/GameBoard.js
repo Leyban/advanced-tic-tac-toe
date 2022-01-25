@@ -5,33 +5,23 @@ import { TicTacContext } from "../contexts/TicTacContext";
 
 const GameBoard = () => {
     const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement } = useContext(PlayerContext);
-    const {p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner } = useContext(TicTacContext);
-    // let board = [   [0,0],[0,0],[0,0],
-    //                 [0,0],[0,0],[0,0],
-    //                 [0,0],[0,0],[0,0]   ];
-    
-    // const checkValid = (playerNum, coinSize, slotNum) => {
-    //     if(playerNum === board[slotNum-1][0]){ return false }
-    //     else if (coinSize < board[slotNum-1][1]){ return false }
-    //     else { return true }
-    // }
+    const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, playerWallet, setPlayerWallet } = useContext(TicTacContext);
 
     const handleClick = (slotNum) => {
         console.log('gameboard handleClicked');
 
-        console.log('slotClicked')
+        console.log('slotClicked');
         if (!coinElement){return;}
 
-        let playerNum=0;
+        let playerNum = 0;
         if(player === 'player-1'){playerNum = 1}
         else{playerNum = 2};
+
         if(!checkValid(playerNum, coinSize, slotNum)){return;}
         else{
             let newBoard = board;
             newBoard.splice(slotNum-1,1,[playerNum,coinSize])
             setBoard(newBoard);
-
-            // Saving on local board
 
             // Removing the coin from the deck
             const coinNode = document.querySelector(`.player-deck.${player} .coin-shadow-${coinSize}`);
@@ -54,8 +44,19 @@ const GameBoard = () => {
             slotNode.innerHTML = '';
             slotNode.appendChild(coinShadow);
 
-            checkWinner();
+            // Removing the coin from the player wallet
+            let playerWalletPlaceholder = playerWallet;
+            playerWalletPlaceholder[player].splice(playerWalletPlaceholder[player].indexOf(coinSize),1);
+            setPlayerWallet(playerWalletPlaceholder);
 
+            // Checking if the game should end;
+            checkWinner();
+            
+
+            // Changing player turn
+            setP1Turn(!p1Turn);
+
+            // Resetting the move data
             setPlayer('');
             setCoinSize(null);
             setCoinElement(null);

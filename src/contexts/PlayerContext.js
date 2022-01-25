@@ -10,7 +10,7 @@ const PlayerContextProvider = (props) => {
 
 
     return (  
-        <PlayerContext.Provider value ={{ player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement}}>
+        <PlayerContext.Provider value ={{ player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement }}>
             {props.children}
         </PlayerContext.Provider>
     );

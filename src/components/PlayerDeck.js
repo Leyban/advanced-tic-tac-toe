@@ -1,11 +1,32 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
+import { TicTacContext } from "../contexts/TicTacContext";
 
 const PlayerDeck = (props) => {
     const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement } = useContext(PlayerContext);
+    const { p1Turn, walletSize, setWalleSize, playerWallet, setPlayerWallet } = useContext(TicTacContext);
+
+    useEffect(()=>{
+        let allowance = [];
+        let playerWalletPlaceholder = playerWallet;
+        for (let i = 1; i <= walletSize; i++ ){
+            allowance.push(i);
+        }
+        playerWalletPlaceholder[props.player] = allowance;
+
+        setPlayerWallet(playerWalletPlaceholder);
+    },[]);
+
 
     const handleClick = (e, num) => {
         console.log('player-deck handleClicked');
+
+        // Checking if this player's turn
+        if(props.player === 'player-1'){
+            if(!p1Turn){return;}
+        } else if(props.player === 'player-2'){
+            if(p1Turn){return;}
+        }
 
         // Selecting the coin shadow for the bounce effect since it contains the whole coin
         let selectedCoinElement = e.target;
@@ -26,8 +47,8 @@ const PlayerDeck = (props) => {
         setCoinSize(num);
         setCoinElement(document.querySelector(`.player-deck.${props.player} .coin-shadow-${num}`));
     }
+
     const coinStack = [];
-    let walletSize = 5;
     for(let i=walletSize; i>0; i--){
         coinStack.push(<div key={i} className={"coin-shadow-" + String(i)} onClick={(e)=>{handleClick(e,i)}}><div className={"coin-" + i}><h1>{i}</h1></div></div>)
     }
@@ -40,5 +61,6 @@ const PlayerDeck = (props) => {
         </div>
     );
 }
- 
+
+
 export default PlayerDeck;
