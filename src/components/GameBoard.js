@@ -4,8 +4,9 @@ import { TicTacContext } from "../contexts/TicTacContext";
 
 
 const GameBoard = () => {
-    const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement } = useContext(PlayerContext);
+    const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement, shakeCoin } = useContext(PlayerContext);
     const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, playerWallet, setPlayerWallet } = useContext(TicTacContext);
+
 
     const handleClick = (slotNum) => {
         console.log('gameboard handleClicked');
@@ -17,7 +18,7 @@ const GameBoard = () => {
         if(player === 'player-1'){playerNum = 1}
         else{playerNum = 2};
 
-        if(!checkValid(playerNum, coinSize, slotNum)){return;}
+        if(!checkValid(playerNum, coinSize, slotNum)){return shakeCoin('board',slotNum);}
         else{
             let newBoard = board;
             newBoard.splice(slotNum-1,1,[playerNum,coinSize])
@@ -51,7 +52,7 @@ const GameBoard = () => {
 
             // Checking if the game should end;
             checkWinner();
-            
+
 
             // Changing player turn
             setP1Turn(!p1Turn);
