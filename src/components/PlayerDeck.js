@@ -1,22 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { TicTacContext } from "../contexts/TicTacContext";
 
 const PlayerDeck = (props) => {
     const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement, shakeCoin } = useContext(PlayerContext);
-    const { p1Turn, walletSize, setWalleSize, playerWallet, setPlayerWallet } = useContext(TicTacContext);
-
-    useEffect(()=>{
-        let allowance = [];
-        let playerWalletPlaceholder = playerWallet;
-        for (let i = 1; i <= walletSize; i++ ){
-            allowance.push(i);
-        }
-        playerWalletPlaceholder[props.player] = allowance;
-
-        setPlayerWallet(playerWalletPlaceholder);
-    },[]);
-
+    const { p1Turn, playerWallet, setPlayerWallet, reset } = useContext(TicTacContext);
 
     const handleClick = (e, num) => {
         console.log('player-deck handleClicked');
@@ -48,15 +36,15 @@ const PlayerDeck = (props) => {
         setCoinElement(document.querySelector(`.player-deck.${props.player} .coin-shadow-${num}`));
     }
 
-    const coinStack = [];
-    for(let i=walletSize; i>0; i--){
-        coinStack.push(<div key={i} className={"coin-shadow-" + String(i)} onClick={(e)=>{handleClick(e,i)}}><div className={"coin-" + i}><h1>{i}</h1></div></div>)
-    }
-
     return (  
         <div className="player-deck-shadow">
             <div className={"player-deck " + props.player}>
-                {coinStack}
+                {playerWallet[props.player].map(playerCoin => (
+                    <div key={playerCoin} className={"coin-shadow-" + String(playerCoin)} onClick={(e)=>{handleClick(e,playerCoin)}}>
+                        <div className={"coin-" + playerCoin}>
+                           <h1>{playerCoin}</h1>
+                        </div>
+                    </div>))}
             </div>
         </div>
     );

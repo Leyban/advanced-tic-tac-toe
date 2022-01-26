@@ -1,18 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { TicTacContext } from "../contexts/TicTacContext";
 
 
 const GameBoard = () => {
-    const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement, shakeCoin } = useContext(PlayerContext);
+    const { player, setPlayer, coinSize, setCoinSize, shakeCoin } = useContext(PlayerContext);
     const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, playerWallet, setPlayerWallet } = useContext(TicTacContext);
 
+    useEffect(()=>{console.log('caught playerwallet change')},[playerWallet])
 
     const handleClick = (slotNum) => {
         console.log('gameboard handleClicked');
-
-        console.log('slotClicked');
-        if (!coinElement){return;}
+        if (!coinSize){return;}
 
         let playerNum = 0;
         if(player === 'player-1'){playerNum = 1}
@@ -25,8 +24,8 @@ const GameBoard = () => {
             setBoard(newBoard);
 
             // Removing the coin from the deck
-            const coinNode = document.querySelector(`.player-deck.${player} .coin-shadow-${coinSize}`);
-            coinNode.parentNode.removeChild(coinNode);
+            // const coinNode = document.querySelector(`.player-deck.${player} .coin-shadow-${coinSize}`);
+            // coinNode.parentNode.removeChild(coinNode);
 
             // Creating the coin for the board
             const coinShadow = document.createElement("div");
@@ -46,8 +45,8 @@ const GameBoard = () => {
             slotNode.appendChild(coinShadow);
 
             // Removing the coin from the player wallet
-            let playerWalletPlaceholder = playerWallet;
-            playerWalletPlaceholder[player].splice(playerWalletPlaceholder[player].indexOf(coinSize),1);
+            let playerWalletPlaceholder = {...playerWallet};
+            playerWalletPlaceholder[player] = playerWalletPlaceholder[player].filter(walletCoin=>walletCoin!=coinSize);
             setPlayerWallet(playerWalletPlaceholder);
 
             // Checking if the game should end;
@@ -60,7 +59,6 @@ const GameBoard = () => {
             // Resetting the move data
             setPlayer('');
             setCoinSize(null);
-            setCoinElement(null);
         }
     }
 
