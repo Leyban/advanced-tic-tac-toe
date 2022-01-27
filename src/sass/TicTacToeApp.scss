@@ -15,9 +15,138 @@ header{
     width: $container-size-lg;
     margin: auto;
     text-align: center;
-    margin-bottom: 50px;
-    color: white;
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div.turn-signal{
+        background: darken($slot-color, 7%);
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 100px;
+        border-radius: 10px;
+        h3{
+            margin: 5px;
+        }
+        .cross{
+            padding-right: 3px;
+        }
+        span.circle{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 5px solid #F2B138 ;
+            display: inline-block;
+            margin: 3px 0 0 0;
+        }
+    }
+    div.title{
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            margin: 10px;
+        }
+    }
+
+    span.circle{
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 10px solid #F2B138 ;
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .reset-shadow{
+        background: darken(lightgray,40%);
+        border-radius: 10px;
+        margin-left: 40px;
+        button{
+            transform: translateY(-5px);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background: lightgray;
+        }
+        button:active{
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes fadeIn {
+        0%{opacity: 0}
+        100%{opacity: 1}
+    }
+
+    .overlay{
+        animation: 0.5s ease-out 0s 1 fadeIn;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0, 0.7);  
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .end-message{
+        background-color: $slot-color;
+        width: 100%;
+        height: 25%;
+        h1{
+            display: inline-block;
+            margin: 20px 10px;
+        }
+        span{
+            margin: 0 -10px -5px 0;
+        }
+        @mixin endButton {
+            display: inline-block;
+            border-radius: 10px;
+            margin: 0px 30px;
+            button{
+                transform: translateY(-5px);
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                cursor: pointer;
+                h2{
+                    color: darken($deck-color, 2%);
+                }
+            }
+            button:active{
+                transform: translateY(0px);
+            }
+            
+        }
+        .view-board{
+                @include endButton;
+                background-color: darken(#F2B138, 20%);
+            button{
+                background-color: #F2B138;
+            }
+        }
+        .new-game{
+                @include endButton;
+                background-color: darken(#31C2BD, 20%);
+            button{
+                background-color: #31C2BD;
+            }
+        }
+    }
 }
+
+
+
+
 
 // Play Space Styles
 .play-space{

@@ -7,8 +7,6 @@ const GameBoard = () => {
     const { player, setPlayer, coinSize, setCoinSize, shakeCoin } = useContext(PlayerContext);
     const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, checkTie, playerWallet, setPlayerWallet } = useContext(TicTacContext);
 
-    useEffect(()=>{console.log('caught playerwallet change')},[playerWallet])
-
     const handleClick = (slotNum) => {
         console.log('gameboard handleClicked');
         if (!coinSize){return;}

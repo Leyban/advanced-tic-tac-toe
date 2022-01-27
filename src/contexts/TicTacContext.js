@@ -47,10 +47,7 @@ const TicTacContextProvider = (props) => {
 
         const slotsForP1 = board.filter(oneSlot => oneSlot[0]!==1);
         const slotsForP2 = board.filter(oneSlot => oneSlot[0]!==2);
-
-        console.log('For player 1',largestP1, slotsForP1);
-        console.log('For player 2',largestP2, slotsForP2);
-
+        
         if(slotsForP1.every(oneSlot => oneSlot[1]>=largestP1)){
             if(slotsForP2.every(oneSlot => oneSlot[1]>=largestP2)){return setWinner(-1)}
         }
