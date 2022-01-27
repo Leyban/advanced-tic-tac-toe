@@ -4,7 +4,7 @@ export const TicTacContext = createContext();
 
 const TicTacContextProvider = (props) => {
     const [p1Turn, setP1Turn] = useState(true);
-    const [winner, setWinner] = useState(null);
+    const [winner, setWinner] = useState(0);
     const [board, setBoard] = useState([[0,0],[0,0],[0,0],
                                         [0,0],[0,0],[0,0],
                                         [0,0],[0,0],[0,0]]);
@@ -16,10 +16,6 @@ const TicTacContextProvider = (props) => {
     }
 
     const [playerWallet, setPlayerWallet] = useState({'player-1': allowance , 'player-2': allowance})
-
-    useEffect(()=>{
-        console.log('wallet changed', playerWallet);
-    },[playerWallet])
 
     const gameReset=()=>{
         let newAllowance = [];
@@ -34,6 +30,30 @@ const TicTacContextProvider = (props) => {
         setBoard([  [0,0],[0,0],[0,0],
                     [0,0],[0,0],[0,0],
                     [0,0],[0,0],[0,0]   ])
+    }
+
+    // A function that will tell if a player can pass or not
+    const canPass = () => {
+
+
+
+        return false;
+    }
+
+    // Check if the game should end in a tie
+    const checkTie = () => {
+        const largestP1 = playerWallet['player-1'].reduce((a,b) => { return Math.max(a,b) },-1);
+        const largestP2 = playerWallet['player-2'].reduce((a,b) => { return Math.max(a,b) },-1);
+
+        const slotsForP1 = board.filter(oneSlot => oneSlot[0]!==1);
+        const slotsForP2 = board.filter(oneSlot => oneSlot[0]!==2);
+
+        console.log('For player 1',largestP1, slotsForP1);
+        console.log('For player 2',largestP2, slotsForP2);
+
+        if(slotsForP1.every(oneSlot => oneSlot[1]>=largestP1)){
+            if(slotsForP2.every(oneSlot => oneSlot[1]>=largestP2)){return setWinner(-1)}
+        }
     }
 
     // Win Conditions based on the board array
@@ -64,7 +84,7 @@ const TicTacContextProvider = (props) => {
     }
 
     return (  
-        <TicTacContext.Provider value={{p1Turn, setP1Turn, checkValid, board, setBoard, winner, setWinner, checkWinner, walletSize, setWalletSize, playerWallet, setPlayerWallet, gameReset}}>
+        <TicTacContext.Provider value={{p1Turn, setP1Turn, checkValid, board, setBoard, winner, setWinner, checkWinner, checkTie, walletSize, setWalletSize, playerWallet, setPlayerWallet, gameReset}}>
             {props.children}
         </TicTacContext.Provider>
     );

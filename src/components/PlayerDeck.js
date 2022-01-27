@@ -4,10 +4,12 @@ import { TicTacContext } from "../contexts/TicTacContext";
 
 const PlayerDeck = (props) => {
     const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement, shakeCoin } = useContext(PlayerContext);
-    const { p1Turn, playerWallet, setPlayerWallet, reset } = useContext(TicTacContext);
+    const { p1Turn, playerWallet, winner } = useContext(TicTacContext);
 
     const handleClick = (e, num) => {
         console.log('player-deck handleClicked');
+        // Checking if the game has ended
+        if(winner !== 0){return;}
 
         // Checking if this player's turn
         if(props.player === 'player-1'){

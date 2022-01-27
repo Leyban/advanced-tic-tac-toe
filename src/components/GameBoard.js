@@ -5,7 +5,7 @@ import { TicTacContext } from "../contexts/TicTacContext";
 
 const GameBoard = () => {
     const { player, setPlayer, coinSize, setCoinSize, shakeCoin } = useContext(PlayerContext);
-    const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, playerWallet, setPlayerWallet } = useContext(TicTacContext);
+    const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, checkTie, playerWallet, setPlayerWallet } = useContext(TicTacContext);
 
     useEffect(()=>{console.log('caught playerwallet change')},[playerWallet])
 
@@ -22,10 +22,6 @@ const GameBoard = () => {
             let newBoard = board;
             newBoard.splice(slotNum-1,1,[playerNum,coinSize])
             setBoard(newBoard);
-
-            // Removing the coin from the deck
-            // const coinNode = document.querySelector(`.player-deck.${player} .coin-shadow-${coinSize}`);
-            // coinNode.parentNode.removeChild(coinNode);
 
             // Creating the coin for the board
             const coinShadow = document.createElement("div");
@@ -45,12 +41,13 @@ const GameBoard = () => {
             slotNode.appendChild(coinShadow);
 
             // Removing the coin from the player wallet
-            let playerWalletPlaceholder = {...playerWallet};
+            let playerWalletPlaceholder = playerWallet;
             playerWalletPlaceholder[player] = playerWalletPlaceholder[player].filter(walletCoin=>walletCoin!=coinSize);
             setPlayerWallet(playerWalletPlaceholder);
 
             // Checking if the game should end;
             checkWinner();
+            checkTie();
 
 
             // Changing player turn
