@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDotCircle, faRedo, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { TicTacContext } from "../contexts/TicTacContext";
 
 const Header = () => {

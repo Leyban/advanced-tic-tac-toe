@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { TicTacContext } from "../contexts/TicTacContext";
 
 const PlayerDeck = (props) => {
-    const { player, setPlayer, coinSize, setCoinSize, coinElement, setCoinElement, shakeCoin } = useContext(PlayerContext);
+    const { setPlayer, setCoinSize, setCoinElement, shakeCoin } = useContext(PlayerContext);
     const { p1Turn, playerWallet, winner } = useContext(TicTacContext);
 
     const handleClick = (e, num) => {
-        console.log('player-deck handleClicked');
         // Checking if the game has ended
         if(winner !== 0){return;}
 

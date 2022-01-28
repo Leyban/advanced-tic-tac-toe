@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { PlayerContext } from "../contexts/PlayerContext";
 import { TicTacContext } from "../contexts/TicTacContext";
 
@@ -8,7 +8,6 @@ const GameBoard = () => {
     const { p1Turn, setP1Turn, checkValid, board, setBoard, checkWinner, checkTie, playerWallet, setPlayerWallet } = useContext(TicTacContext);
 
     const handleClick = (slotNum) => {
-        console.log('gameboard handleClicked');
         if (!coinSize){return;}
 
         let playerNum = 0;

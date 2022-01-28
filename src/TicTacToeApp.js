@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import GameBoard from "./components/GameBoard";
 import Header from "./components/Header";
 import PlayerDeck from "./components/PlayerDeck";
@@ -18,6 +19,7 @@ function TicTacToeApp() {
                   <PlayerDeck player="player-2"/>
                 </PlayerContextProvider>
               </div>
+              <Footer />
             </TicTacContextProvider>
         </div>
   );

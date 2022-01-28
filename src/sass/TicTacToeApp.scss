@@ -39,7 +39,7 @@ header{
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            border: 5px solid #F2B138 ;
+            border: 5px solid $player-2-color ;
             display: inline-block;
             margin: 3px 0 0 0;
         }
@@ -58,7 +58,7 @@ header{
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        border: 10px solid #F2B138 ;
+        border: 10px solid $player-2-color;
         display: inline-block;
         margin: 10px;
     }
@@ -83,7 +83,6 @@ header{
         0%{opacity: 0}
         100%{opacity: 1}
     }
-
     .overlay{
         animation: 0.5s ease-out 0s 1 fadeIn;
         position: fixed;
@@ -129,16 +128,16 @@ header{
         }
         .view-board{
                 @include endButton;
-                background-color: darken(#F2B138, 20%);
+                background-color: darken($player-2-color, 20%);
             button{
-                background-color: #F2B138;
+                background-color: $player-2-color;
             }
         }
         .new-game{
                 @include endButton;
-                background-color: darken(#31C2BD, 20%);
+                background-color: darken($player-1-color, 20%);
             button{
-                background-color: #31C2BD;
+                background-color: $player-1-color;
             }
         }
     }
@@ -222,7 +221,7 @@ header{
         width: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         height: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         border-radius: 50%;
-        background-color: darken(#31C2BD, 20%);
+        background-color: darken($player-1-color, 20%);
     }
     .coin-#{$i}:hover{
         cursor: pointer;
@@ -231,23 +230,76 @@ header{
 .player-1 {
     @for $i from 1 through 5 {
     .coin-#{$i}{
-        background-color: #31C2BD;
+        background-color: $player-1-color;
         transform: translateY(-3px - ($i * 0.7));
     }
     .coin-shadow-#{$i}{
-        background-color: darken(#31C2BD, 20%);
+        background-color: darken($player-1-color, 20%);
     }
     }
 }
 .player-2 {
     @for $i from 1 through 5 {
     .coin-#{$i}{
-        background-color: #F2B138;
+        background-color: $player-2-color;
         transform: translateY(-3px - ($i * 0.7));
     }
     .coin-shadow-#{$i}{
-        background-color: darken(#F2B138, 20%);
+        background-color: darken($player-2-color, 20%);
     }
+    }
+}
+
+// Footer Styles
+Footer{
+    .scoreboard{
+        width: $container-size-lg;
+        margin: auto;
+        text-align: center;
+        color: $deck-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @mixin scorecard {
+            padding: 7px 0 7px 0;
+            width: $slot-size-lg ;
+            height: 55px;
+            border-radius: 10px;
+        }
+
+        .player-1-score-shadow{
+            .player-1-score{
+                @include scorecard;
+                background-color: $player-1-color;
+            }
+        }
+        .tie-score-shadow{
+            .tie-score{
+                @include scorecard;
+                background-color: lightgray;
+                h2{
+                    padding-top: 3px;
+                }
+            }
+        }
+        .player-2-score-shadow{
+            .player-2-score{
+                @include scorecard;
+                background-color: $player-2-color;
+                span.circle{
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    border: 5px solid $deck-color ;
+                    display: inline-block;
+                    margin: 4px 0 0 0;
+                }
+                h2{
+                    margin-top: -1px;
+                }
+            }
+        }
     }
 }
 

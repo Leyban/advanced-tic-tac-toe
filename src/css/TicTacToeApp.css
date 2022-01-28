@@ -390,6 +390,51 @@ header .end-message .new-game button {
   background-color: #b87c0c;
 }
 
+Footer .scoreboard {
+  width: 520px;
+  margin: auto;
+  text-align: center;
+  color: #1e3640;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+Footer .scoreboard .player-1-score-shadow .player-1-score {
+  padding: 7px 0 7px 0;
+  width: 160px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: #31C2BD;
+}
+Footer .scoreboard .tie-score-shadow .tie-score {
+  padding: 7px 0 7px 0;
+  width: 160px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+Footer .scoreboard .tie-score-shadow .tie-score h2 {
+  padding-top: 3px;
+}
+Footer .scoreboard .player-2-score-shadow .player-2-score {
+  padding: 7px 0 7px 0;
+  width: 160px;
+  height: 55px;
+  border-radius: 10px;
+  background-color: #F2B138;
+}
+Footer .scoreboard .player-2-score-shadow .player-2-score span.circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 5px solid #1e3640;
+  display: inline-block;
+  margin: 4px 0 0 0;
+}
+Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
+  margin-top: -1px;
+}
+
 @keyframes bounce {
   15% {
     transform: translateY(0px);

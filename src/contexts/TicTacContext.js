@@ -9,6 +9,7 @@ const TicTacContextProvider = (props) => {
                                         [0,0],[0,0],[0,0],
                                         [0,0],[0,0],[0,0]]);
     const [walletSize, setWalletSize] = useState(5);
+    const [score, setScore] = useState([0,0,0]);
 
     let allowance = [];
     for (let i = walletSize; i >= 1; i-- ){
@@ -47,9 +48,14 @@ const TicTacContextProvider = (props) => {
 
         const slotsForP1 = board.filter(oneSlot => oneSlot[0]!==1);
         const slotsForP2 = board.filter(oneSlot => oneSlot[0]!==2);
-        
+
         if(slotsForP1.every(oneSlot => oneSlot[1]>=largestP1)){
-            if(slotsForP2.every(oneSlot => oneSlot[1]>=largestP2)){return setWinner(-1)}
+            if(slotsForP2.every(oneSlot => oneSlot[1]>=largestP2)){
+                let scoreCopy = score;
+                scoreCopy[0]++;
+                setScore(scoreCopy);
+                return setWinner(-1);
+            }
         }
     }
 
@@ -59,13 +65,23 @@ const TicTacContextProvider = (props) => {
     // Check if any of the conditions are met
     const checkWinner = () => {
         winConditions.forEach(cond => {
-            console.log('win check');
             // Check if it has any coins
             if(board[cond[0]][0] && board[cond[1]][0] && board[cond[2]][0]){
-                console.log('3 filled');
                 // Check if all coins in the three positions belong to the same player
                 if(board[cond[0]][0] === board[cond[1]][0]){
                     if(board[cond[1]][0] === board[cond[2]][0]){
+                        // Making the winning coins bounce
+                        const coin1 = document.querySelector(`.slot-${cond[0]+1}>div`);
+                        const coin2 = document.querySelector(`.slot-${cond[1]+1}>div`);
+                        const coin3 = document.querySelector(`.slot-${cond[2]+1}>div`);
+                        coin1.classList.add('active');
+                        coin2.classList.add('active');
+                        coin3.classList.add('active');
+
+                        // Score and Winner Update
+                        let scoreCopy = score;
+                        scoreCopy[board[cond[0]][0]]++;
+                        setScore(scoreCopy);
                         return setWinner(board[cond[0]][0]);
                     }
                 }
@@ -81,7 +97,9 @@ const TicTacContextProvider = (props) => {
     }
 
     return (  
-        <TicTacContext.Provider value={{p1Turn, setP1Turn, checkValid, board, setBoard, winner, setWinner, checkWinner, checkTie, walletSize, setWalletSize, playerWallet, setPlayerWallet, gameReset}}>
+        <TicTacContext.Provider value={{p1Turn, setP1Turn, checkValid, board, setBoard, winner, setWinner, 
+                                        checkWinner, checkTie, walletSize, setWalletSize, playerWallet, 
+                                        setPlayerWallet, gameReset, score, setScore}}>
             {props.children}
         </TicTacContext.Provider>
     );
