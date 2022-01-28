@@ -46,49 +46,57 @@ const Header = () => {
 
             {winner===1 &&  <div className="overlay">
                                 <div className="end-message">
-                                    <h1><FontAwesomeIcon icon={faTimes} color='#31C2BD' size='lg'/></h1><h1>Takes the Round!</h1>
-                                    <br />
-                                    <div className="view-board">
-                                        <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
-                                    </div>
-                                    <div className="new-game">
-                                        <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                    <div className="centered">
+                                        <h1><FontAwesomeIcon icon={faTimes} color='#31C2BD' size='lg'/></h1><h1>Takes the Round!</h1>
+                                        <br />
+                                        <div className="view-board">
+                                            <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
+                                        </div>
+                                        <div className="new-game">
+                                            <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>}
             {winner===2 && <div className="overlay">
                                 <div className="end-message">
-                                    <h1><span className="circle"></span></h1><h1>Takes the Round!</h1>
-                                    <br />
-                                    <div className="view-board">
-                                        <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
-                                    </div>
-                                    <div className="new-game">
-                                        <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                    <div className="centered">
+                                        <h1><span className="circle"></span></h1><h1>Takes the Round!</h1>
+                                        <br />
+                                        <div className="view-board">
+                                            <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
+                                        </div>
+                                        <div className="new-game">
+                                            <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>}
             {winner===-1 && <div className="overlay">
                                 <div className="end-message">
-                                    <h1>It's a Tie!</h1>
-                                    <br />
-                                    <div className="view-board">
-                                        <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
-                                    </div>
-                                    <div className="new-game">
-                                        <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                    <div className="centered">
+                                        <h1>It's a Tie!</h1>
+                                        <br />
+                                        <div className="view-board">
+                                            <button onClick={()=>viewBoard()}><h2>View Board</h2></button>
+                                        </div>
+                                        <div className="new-game">
+                                            <button onClick={()=>reset()}><h2>New Game</h2></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>}
             {winner===-5 && <div className="overlay">
                                 <div className="end-message">
-                                    <h1>Restart Game?</h1>
-                                    <br />
-                                    <div className="view-board">
-                                        <button onClick={()=>resumeGame()}><h2>No, Resume Game</h2></button>
-                                    </div>
-                                    <div className="new-game">
-                                        <button onClick={()=>reset()}><h2>Yes, Restart Game</h2></button>
+                                    <div className="centered">
+                                        <h1>Restart Game?</h1>
+                                        <br />
+                                        <div className="view-board">
+                                            <button onClick={()=>resumeGame()}><h2>No, Resume Game</h2></button>
+                                        </div>
+                                        <div className="new-game">
+                                            <button onClick={()=>reset()}><h2>Yes, Restart Game</h2></button>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>}
