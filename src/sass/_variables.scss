@@ -25,8 +25,8 @@ $container-size-sm: ($slot-size-sm * 3) + ($grid-gap-sm * 2);
 // Player Deck Styles Variables
 $deck-color: rgb(30,54,64);
 $deck-size-lg: 210px;
-$deck-size-md: 190px;
-$deck-size-sm: 180px;
+$deck-size-v: 520px;
+$deck-size-v-sm: 300px;
 
 $deck-height-lg: ($slot-size-lg * 3.5);
 

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const TicTacContext = createContext();
 
@@ -34,12 +34,10 @@ const TicTacContextProvider = (props) => {
     }
 
     // A function that will tell if a player can pass or not
-    const canPass = () => {
-
-
-
-        return false;
-    }
+    // Only applicable on larger coin set so nevermind this
+    // const canPass = () => {
+    //     return false;
+    // }
 
     // Check if the game should end in a tie
     const checkTie = () => {

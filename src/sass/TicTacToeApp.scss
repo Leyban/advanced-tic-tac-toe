@@ -7,10 +7,14 @@ body{
 }
 
 .TicTacToeApp {
+    display: block;
     font-family: 'Roboto', sans-serif;
     background-color: $background-color;
+    max-width: 1200px;
+    margin: auto;
 }
 
+// Header Styles
 header{
     width: $container-size-lg;
     margin: auto;
@@ -144,11 +148,9 @@ header{
 }
 
 
-
-
-
 // Play Space Styles
 .play-space{
+    max-width: inherit;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -192,6 +194,7 @@ header{
     width: $slot-size-lg;
     height: $deck-height-lg + 10px;
     border-radius: 10px;
+    margin: 0 20px 0 20px;
 }
 .player-deck{
     background-color: $deck-color;
@@ -206,6 +209,7 @@ header{
 
 @for $i from 1 through 5 {
     .coin-#{$i}{
+        transform: translateY(-3px - ($i * 0.7));
         width: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         height: $coin-size-lg * ( 0.25 + ( 0.15 * $i ));
         font-size: $coin-size-lg * ( 0.1 + ( 0.05 * $i ));
@@ -231,7 +235,6 @@ header{
     @for $i from 1 through 5 {
     .coin-#{$i}{
         background-color: $player-1-color;
-        transform: translateY(-3px - ($i * 0.7));
     }
     .coin-shadow-#{$i}{
         background-color: darken($player-1-color, 20%);
@@ -242,7 +245,6 @@ header{
     @for $i from 1 through 5 {
     .coin-#{$i}{
         background-color: $player-2-color;
-        transform: translateY(-3px - ($i * 0.7));
     }
     .coin-shadow-#{$i}{
         background-color: darken($player-2-color, 20%);
@@ -316,6 +318,194 @@ Footer{
         transform: translateY(0px);
     }
 }
+@keyframes bouncemd {
+    15% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+@keyframes bouncesm {
+    15% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 .active{
     animation: bounce 1s infinite;
+}
+
+// Responsiveness
+@media only screen and (max-width: 920px) {
+    .play-space{
+        display: flex;
+        flex-flow: column;
+    }
+    .container{
+        width: $container-size-md;
+        gap: $grid-gap-md;
+        row-gap: $grid-gap-md - 10px;
+    }
+    .slot{
+        width: $slot-size-md;
+        height: $slot-size-md;
+    }
+    .slot-shadow{
+        width: $slot-size-md;
+        height: $slot-size-md + 10px;
+    }
+    .player-deck-shadow{
+        width: $deck-size-v;
+        height: $slot-size-md + 10px;
+        margin: 10px 0 10px 0;
+    }
+    .player-deck{
+        width: $deck-size-v;
+        height: $slot-size-md;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    @for $i from 1 through 5 {
+        .coin-#{$i}{
+        transform: translateY(-2.5px - ($i * 0.5));
+        width: $coin-size-lg * ( 0.20 + ( 0.1 * $i ));
+            height: $coin-size-lg * ( 0.20 + ( 0.1 * $i ));
+            font-size: $coin-size-lg * ( 0.08 + ( 0.03 * $i ));
+        }
+        .coin-shadow-#{$i}{
+            width: $coin-size-lg * ( 0.20 + ( 0.1 * $i ));
+            height: $coin-size-lg * ( 0.20 + ( 0.1 * $i ));
+        }
+    }
+    .active{
+        animation: bouncemd 1s infinite;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    header{
+        width: 300px;
+        justify-content: space-between;
+        align-items: center;
+
+        div.title{
+            .text-title{
+                display: none;
+            }
+            .title-cross{
+                margin-right: -5px;
+            }
+        }
+    
+        .reset-shadow{
+            margin: 5px 0px 0px 0px;
+            button{
+                transform: translateY(-4px);
+                padding: 10px 40px;
+            }
+            button:active{
+                transform: translateY(0px);
+            }
+        }
+    }
+
+    .container{
+        width: $container-size-sm;
+        gap: $grid-gap-sm;
+        row-gap: $grid-gap-sm - 10px;
+    }
+    .slot{
+        width: $slot-size-sm;
+        height: $slot-size-sm;
+    }
+    .slot-shadow{
+        width: $slot-size-sm;
+        height: $slot-size-sm + 10px;
+    }
+    .player-deck-shadow{
+        width: $deck-size-v-sm;
+        height: $slot-size-sm + 10px;
+        margin: 10px 0 10px 0;
+    }
+    .player-deck{
+        width: $deck-size-v-sm;
+        height: $slot-size-sm;
+    }
+
+    @for $i from 1 through 5 {
+        .coin-#{$i}{
+            transform: translateY(-1.5px - ($i * 0.3));
+            width: $coin-size-lg * ( 0.25 + ( 0.045 * $i ));
+            height: $coin-size-lg * ( 0.25 + ( 0.045 * $i ));
+            font-size: $coin-size-lg * ( 0.07 + ( 0.02 * $i ));
+        }
+        .coin-shadow-#{$i}{
+            width: $coin-size-lg * ( 0.25 + ( 0.045 * $i ));
+            height: $coin-size-lg * ( 0.25 + ( 0.045 * $i ));
+        }
+    }
+    .active{
+        animation: bouncesm 1s infinite;
+    }
+
+    Footer{
+        .scoreboard{
+            width: $container-size-sm;
+
+            @mixin scorecardsm {
+                padding: 3px 0 0px 0;
+                width: $slot-size-sm ;
+                height: 50px;
+                h2{
+                    font-size: 18px;
+                }
+            }
+    
+            .player-1-score-shadow{
+                .player-1-score{
+                    @include scorecardsm;
+                    background-color: $player-1-color;
+                }
+            }
+            .tie-score-shadow{
+                .tie-score{
+                    @include scorecardsm;
+                    background-color: lightgray;
+                    h2{
+                        padding-top: 2px;
+                    }
+                }
+            }
+            .player-2-score-shadow{
+                .player-2-score{
+                    @include scorecardsm;
+                    background-color: $player-2-color;
+                    span.circle{
+                        width: 7px;
+                        height: 7px;
+                        border-radius: 50%;
+                        border: 5px solid $deck-color ;
+                        display: inline-block;
+                        margin: 4px 0 0 0;
+                    }
+                    h2{
+                        margin-top: -1px;
+                    }
+                }
+            }
+        }
+    }
 }

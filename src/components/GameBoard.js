@@ -33,13 +33,13 @@ const GameBoard = () => {
 
             // Placing the coin in the board
             const slotNode = document.querySelector(`.slot-${slotNum}`);
-            slotNode.className = 'slot ' + `slot-${slotNum} ` + player;
+            slotNode.className = `slot slot-${slotNum} ${player}`;
             slotNode.innerHTML = '';
             slotNode.appendChild(coinShadow);
 
             // Removing the coin from the player wallet
             let playerWalletPlaceholder = playerWallet;
-            playerWalletPlaceholder[player] = playerWalletPlaceholder[player].filter(walletCoin=>walletCoin!=coinSize);
+            playerWalletPlaceholder[player] = playerWalletPlaceholder[player].filter(walletCoin=>walletCoin!==coinSize);
             setPlayerWallet(playerWalletPlaceholder);
 
             // Checking if the game should end;

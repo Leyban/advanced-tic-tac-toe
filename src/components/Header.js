@@ -4,7 +4,7 @@ import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { TicTacContext } from "../contexts/TicTacContext";
 
 const Header = () => {
-    const { winner, p1Turn, setWinner, setWalletSize, gameReset} = useContext(TicTacContext);
+    const { winner, p1Turn, setWinner, gameReset} = useContext(TicTacContext);
     const reset = () => {
         gameReset();
         setWinner(0);
@@ -34,9 +34,9 @@ const Header = () => {
                     : <div className="turn-signal"><h3><span className="circle"></span></h3><h3>Turn</h3></div>}
 
             <div className="title">
-                <h1><FontAwesomeIcon icon={faTimes} color='#31C2BD' size='lg'/></h1>
-                <h1>Tic Tac Toe</h1> 
-                <span className="circle"></span>
+                <h1 className="title-cross"><FontAwesomeIcon icon={faTimes} color='#31C2BD' size='lg'/></h1>
+                <h1 className="text-title">Tic Tac Toe</h1> 
+                <span className="circle title-circle"></span>
             </div>
 
             <div className="reset-shadow">

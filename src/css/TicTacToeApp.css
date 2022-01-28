@@ -4,8 +4,11 @@ body {
 }
 
 .TicTacToeApp {
+  display: block;
   font-family: "Roboto", sans-serif;
   background-color: #192a32;
+  max-width: 1200px;
+  margin: auto;
 }
 
 header {
@@ -152,6 +155,7 @@ header .end-message .new-game button {
 }
 
 .play-space {
+  max-width: inherit;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -195,6 +199,7 @@ header .end-message .new-game button {
   width: 160px;
   height: 570px;
   border-radius: 10px;
+  margin: 0 20px 0 20px;
 }
 
 .player-deck {
@@ -209,6 +214,7 @@ header .end-message .new-game button {
 }
 
 .coin-1 {
+  transform: translateY(-3.7px);
   width: 48px;
   height: 48px;
   font-size: 18px;
@@ -231,6 +237,7 @@ header .end-message .new-game button {
 }
 
 .coin-2 {
+  transform: translateY(-4.4px);
   width: 66px;
   height: 66px;
   font-size: 24px;
@@ -253,6 +260,7 @@ header .end-message .new-game button {
 }
 
 .coin-3 {
+  transform: translateY(-5.1px);
   width: 84px;
   height: 84px;
   font-size: 30px;
@@ -275,6 +283,7 @@ header .end-message .new-game button {
 }
 
 .coin-4 {
+  transform: translateY(-5.8px);
   width: 102px;
   height: 102px;
   font-size: 36px;
@@ -297,6 +306,7 @@ header .end-message .new-game button {
 }
 
 .coin-5 {
+  transform: translateY(-6.5px);
   width: 120px;
   height: 120px;
   font-size: 42px;
@@ -320,35 +330,30 @@ header .end-message .new-game button {
 
 .player-1 .coin-1 {
   background-color: #31C2BD;
-  transform: translateY(-3.7px);
 }
 .player-1 .coin-shadow-1 {
   background-color: #1c716e;
 }
 .player-1 .coin-2 {
   background-color: #31C2BD;
-  transform: translateY(-4.4px);
 }
 .player-1 .coin-shadow-2 {
   background-color: #1c716e;
 }
 .player-1 .coin-3 {
   background-color: #31C2BD;
-  transform: translateY(-5.1px);
 }
 .player-1 .coin-shadow-3 {
   background-color: #1c716e;
 }
 .player-1 .coin-4 {
   background-color: #31C2BD;
-  transform: translateY(-5.8px);
 }
 .player-1 .coin-shadow-4 {
   background-color: #1c716e;
 }
 .player-1 .coin-5 {
   background-color: #31C2BD;
-  transform: translateY(-6.5px);
 }
 .player-1 .coin-shadow-5 {
   background-color: #1c716e;
@@ -356,35 +361,30 @@ header .end-message .new-game button {
 
 .player-2 .coin-1 {
   background-color: #F2B138;
-  transform: translateY(-3.7px);
 }
 .player-2 .coin-shadow-1 {
   background-color: #b87c0c;
 }
 .player-2 .coin-2 {
   background-color: #F2B138;
-  transform: translateY(-4.4px);
 }
 .player-2 .coin-shadow-2 {
   background-color: #b87c0c;
 }
 .player-2 .coin-3 {
   background-color: #F2B138;
-  transform: translateY(-5.1px);
 }
 .player-2 .coin-shadow-3 {
   background-color: #b87c0c;
 }
 .player-2 .coin-4 {
   background-color: #F2B138;
-  transform: translateY(-5.8px);
 }
 .player-2 .coin-shadow-4 {
   background-color: #b87c0c;
 }
 .player-2 .coin-5 {
   background-color: #F2B138;
-  transform: translateY(-6.5px);
 }
 .player-2 .coin-shadow-5 {
   background-color: #b87c0c;
@@ -446,6 +446,289 @@ Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
     transform: translateY(0px);
   }
 }
+@keyframes bouncemd {
+  15% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes bouncesm {
+  15% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .active {
   animation: bounce 1s infinite;
+}
+
+@media only screen and (max-width: 920px) {
+  .play-space {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .container {
+    width: 390px;
+    gap: 15px;
+    row-gap: 5px;
+  }
+
+  .slot {
+    width: 120px;
+    height: 120px;
+  }
+
+  .slot-shadow {
+    width: 120px;
+    height: 130px;
+  }
+
+  .player-deck-shadow {
+    width: 520px;
+    height: 130px;
+    margin: 10px 0 10px 0;
+  }
+
+  .player-deck {
+    width: 520px;
+    height: 120px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .coin-1 {
+    transform: translateY(-3px);
+    width: 36px;
+    height: 36px;
+    font-size: 13.2px;
+  }
+
+  .coin-shadow-1 {
+    width: 36px;
+    height: 36px;
+  }
+
+  .coin-2 {
+    transform: translateY(-3.5px);
+    width: 48px;
+    height: 48px;
+    font-size: 16.8px;
+  }
+
+  .coin-shadow-2 {
+    width: 48px;
+    height: 48px;
+  }
+
+  .coin-3 {
+    transform: translateY(-4px);
+    width: 60px;
+    height: 60px;
+    font-size: 20.4px;
+  }
+
+  .coin-shadow-3 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .coin-4 {
+    transform: translateY(-4.5px);
+    width: 72px;
+    height: 72px;
+    font-size: 24px;
+  }
+
+  .coin-shadow-4 {
+    width: 72px;
+    height: 72px;
+  }
+
+  .coin-5 {
+    transform: translateY(-5px);
+    width: 84px;
+    height: 84px;
+    font-size: 27.6px;
+  }
+
+  .coin-shadow-5 {
+    width: 84px;
+    height: 84px;
+  }
+
+  .active {
+    animation: bouncemd 1s infinite;
+  }
+}
+@media only screen and (max-width: 540px) {
+  header {
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header div.title .text-title {
+    display: none;
+  }
+  header div.title .title-cross {
+    margin-right: -5px;
+  }
+  header .reset-shadow {
+    margin: 5px 0px 0px 0px;
+  }
+  header .reset-shadow button {
+    transform: translateY(-4px);
+    padding: 10px 40px;
+  }
+  header .reset-shadow button:active {
+    transform: translateY(0px);
+  }
+
+  .container {
+    width: 260px;
+    gap: 10px;
+    row-gap: 0px;
+  }
+
+  .slot {
+    width: 80px;
+    height: 80px;
+  }
+
+  .slot-shadow {
+    width: 80px;
+    height: 90px;
+  }
+
+  .player-deck-shadow {
+    width: 300px;
+    height: 90px;
+    margin: 10px 0 10px 0;
+  }
+
+  .player-deck {
+    width: 300px;
+    height: 80px;
+  }
+
+  .coin-1 {
+    transform: translateY(-1.8px);
+    width: 35.4px;
+    height: 35.4px;
+    font-size: 10.8px;
+  }
+
+  .coin-shadow-1 {
+    width: 35.4px;
+    height: 35.4px;
+  }
+
+  .coin-2 {
+    transform: translateY(-2.1px);
+    width: 40.8px;
+    height: 40.8px;
+    font-size: 13.2px;
+  }
+
+  .coin-shadow-2 {
+    width: 40.8px;
+    height: 40.8px;
+  }
+
+  .coin-3 {
+    transform: translateY(-2.4px);
+    width: 46.2px;
+    height: 46.2px;
+    font-size: 15.6px;
+  }
+
+  .coin-shadow-3 {
+    width: 46.2px;
+    height: 46.2px;
+  }
+
+  .coin-4 {
+    transform: translateY(-2.7px);
+    width: 51.6px;
+    height: 51.6px;
+    font-size: 18px;
+  }
+
+  .coin-shadow-4 {
+    width: 51.6px;
+    height: 51.6px;
+  }
+
+  .coin-5 {
+    transform: translateY(-3px);
+    width: 57px;
+    height: 57px;
+    font-size: 20.4px;
+  }
+
+  .coin-shadow-5 {
+    width: 57px;
+    height: 57px;
+  }
+
+  .active {
+    animation: bouncesm 1s infinite;
+  }
+
+  Footer .scoreboard {
+    width: 260px;
+  }
+  Footer .scoreboard .player-1-score-shadow .player-1-score {
+    padding: 3px 0 0px 0;
+    width: 80px;
+    height: 50px;
+    background-color: #31C2BD;
+  }
+  Footer .scoreboard .player-1-score-shadow .player-1-score h2 {
+    font-size: 18px;
+  }
+  Footer .scoreboard .tie-score-shadow .tie-score {
+    padding: 3px 0 0px 0;
+    width: 80px;
+    height: 50px;
+    background-color: lightgray;
+  }
+  Footer .scoreboard .tie-score-shadow .tie-score h2 {
+    font-size: 18px;
+  }
+  Footer .scoreboard .tie-score-shadow .tie-score h2 {
+    padding-top: 2px;
+  }
+  Footer .scoreboard .player-2-score-shadow .player-2-score {
+    padding: 3px 0 0px 0;
+    width: 80px;
+    height: 50px;
+    background-color: #F2B138;
+  }
+  Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
+    font-size: 18px;
+  }
+  Footer .scoreboard .player-2-score-shadow .player-2-score span.circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 5px solid #1e3640;
+    display: inline-block;
+    margin: 4px 0 0 0;
+  }
+  Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
+    margin-top: -1px;
+  }
 }
