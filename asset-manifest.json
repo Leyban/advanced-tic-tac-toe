@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/advanced-tic-tac-toe/static/css/main.4ec2f371.css",
+    "main.js": "/advanced-tic-tac-toe/static/js/main.eeb29cab.js",
+    "index.html": "/advanced-tic-tac-toe/index.html",
+    "main.4ec2f371.css.map": "/advanced-tic-tac-toe/static/css/main.4ec2f371.css.map",
+    "main.eeb29cab.js.map": "/advanced-tic-tac-toe/static/js/main.eeb29cab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4ec2f371.css",
+    "static/js/main.eeb29cab.js"
+  ]
+}
