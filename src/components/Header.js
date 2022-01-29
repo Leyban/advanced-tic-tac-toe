@@ -87,7 +87,7 @@ const Header = () => {
                                 </div>
                             </div>}
             {winner===-5 && <div className="overlay">
-                                <div className="end-message">
+                                <div className="end-message restart-message">
                                     <div className="centered">
                                         <h1>Restart Game?</h1>
                                         <br />

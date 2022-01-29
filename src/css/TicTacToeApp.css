@@ -4,6 +4,7 @@ body {
 }
 
 .TicTacToeApp {
+  -webkit-tap-highlight-color: transparent;
   display: block;
   font-family: "Roboto", sans-serif;
   background-color: #192a32;
@@ -598,6 +599,12 @@ Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
   header .reset-shadow button:active {
     transform: translateY(0px);
   }
+  header .restart-message {
+    height: 200px;
+  }
+  header .restart-message .new-game {
+    margin: 10px 0 0 0;
+  }
 
   .container {
     width: 260px;
@@ -734,4 +741,7 @@ Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
   Footer .scoreboard .player-2-score-shadow .player-2-score h2 {
     margin-top: -1px;
   }
+}
+*:focus {
+  outline: 0 !important;
 }
